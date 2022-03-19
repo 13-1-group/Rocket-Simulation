@@ -1,2 +1,5 @@
-from ellipsis.plot import matplotlib_plot
-matplotlib_plot.plot_ellipsys(1, 2, 3, 4)
+# Imports
+from ellipsis import core_ellipse
+
+ce = core_ellipse.EllipsePlot(1, 23)
+ce.plot_ellipsys()
