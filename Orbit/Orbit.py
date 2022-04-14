@@ -4,7 +4,7 @@ from constants import OrbitTypes
 
 
 class Orbit:
-    def __init__(self, a, b, x=np.linspace(-2 * pi, 2 * pi, 100), orbit_type=OrbitTypes.PARABOLIC):
+    def __init__(self, a, b, e, x=np.linspace(-2 * pi, 2 * pi, 100), orbit_type=OrbitTypes.PARABOLIC):
         """
         :param:
             a - semi-major axis
@@ -15,6 +15,7 @@ class Orbit:
         self.a = a
         self.b = b
         self.x = x
+        self.e = e
         self.orbit_type = orbit_type
 
     def get_coordinates(self):
