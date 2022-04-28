@@ -12,8 +12,9 @@ class E():
         
 
     def solar_system(self, earth, earth_o, x1, y1):
-        earth.set_data(x1[i], y1[i])
-        earth_o.set_data(x1[:i], y1[:i])
+        for i in range(361):
+            earth.set_data(x1[i], y1[i])
+            earth_o.set_data(x1[:i], y1[:i])
 
         return earth, earth_o
 
@@ -35,7 +36,7 @@ class E():
         anim=animation.FuncAnimation(fig, self.solar_system(earth, earth_o, x1, y1), frames = len(t), interval=25, blit=True, repeat =True)
         fig.patch.set_facecolor('k')
         fig.tight_layout()
-        plt.plot(self.a*eccentricity,0,'ro',markersize=6.5, label='Sun')
+        plt.plot(self.a * self.eccentricity,0,'ro',markersize=6.5, label='Sun')
         plt.axis(False)
         plt.legend()
         plt.show()

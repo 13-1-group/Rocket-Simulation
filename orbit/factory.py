@@ -12,7 +12,8 @@ class Factory:
     def build(self, type):
         if type.o_type == OrbitTypes.ELLIPTICAL.value:
             print(f'you are select a `{str(type.o_type)}` orbit')
-            return elliptical.E(0.9, 0.001).visualuze()
+            result = elliptical.E(0.01, 0.1)
+            result.visualuze()
 
         elif type.o_type == OrbitTypes.PARABOLIC.value:
             print(f'you are select a `{str(type.o_type)}` orbit')
