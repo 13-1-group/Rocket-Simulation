@@ -1,0 +1,2 @@
+class IncorrectOrbitException(Exception):
+    pass
