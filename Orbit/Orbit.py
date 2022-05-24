@@ -3,7 +3,7 @@ from math import pi
 from constants import OrbitTypes
 
 
-class Orbit:
+class Orbit():
     def __init__(self, a, b, x=np.linspace(-2 * pi, 2 * pi, 100), orbit_type=OrbitTypes.PARABOLIC):
         """
         :param:
