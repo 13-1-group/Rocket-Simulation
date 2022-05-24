@@ -6,11 +6,7 @@ import numpy as np
 
 BOUNDS_X = (-20.2, 20.2)
 BOUNDS_Y = (-20.2, 20.2)
-
-# Semimajor and semiminor distances of planet's and comet's orbit are in AU
-p1_a, p1_e = 1, 0.001
-p1_b = p1_a * np.sqrt(1 - p1_e ** 2)
-# p1_p =
+p1_a, p1_e = 10, 0.1
 
 fig = plt.figure()
 ax = plt.axes(xlim=BOUNDS_X, ylim=BOUNDS_Y)
@@ -18,9 +14,9 @@ ax = plt.axes(xlim=BOUNDS_X, ylim=BOUNDS_Y)
 rocket, = ax.plot([], [], marker='o', markersize=4, markerfacecolor='red', label='Rocket')
 rocket_o, = ax.plot([], [], color='w', lw=1.5)
 
-t = np.linspace(0, 2 * np.pi, 361)
-x1 = p1_a * np.cos(t) - p1_a * p1_e
-y1 = p1_b * np.sin(t)
+t = np.linspace(np.pi / 2, 3 * np.pi / 2, 361)
+x1 = np.sqrt(p1_a * 1 / (np.cos(2 * t) + 0.01)) * np.cos(t)
+y1 = np.sqrt(p1_a * 1 / (np.cos(2 * t) + 0.01)) * np.sin(t)
 
 
 def solar_system(i):
@@ -28,8 +24,6 @@ def solar_system(i):
     rocket_o.set_data(x1[:i], y1[:i])
     return rocket, rocket_o
 
-
-# def parabolic(i)
 
 anim = animation.FuncAnimation(fig, solar_system, frames=len(t), interval=25, blit=True, repeat=True)
 fig.patch.set_facecolor('k')
