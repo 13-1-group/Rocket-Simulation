@@ -7,7 +7,7 @@ from .Orbit import Orbit
 
 class Hyperbolic(Orbit):
     '''
-    Parabolic Orbit Rocket Class
+    Hyperbolic Orbit Rocket Class
 
     Methods:
         solar_system(i):
