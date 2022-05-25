@@ -6,7 +6,24 @@ from .Orbit import Orbit
 
 
 class Parabolic(Orbit):
+    '''
+
+        Parabolic Orbit Rocket Class
+
+        Methods:
+            solar_system(i):
+                transmits the coordinates of the rocket's movement.
+            visualize():
+                rendering of the animated movement of the rocket around the celestial body.
+        '''
     def __init__(self, p):
+        '''
+        Initializes the orbit parameters and calculates the coordinates of the rocket's movement.
+
+        :param p: focal parameter - distance between focus and directrix
+        :type p: float
+
+        '''
         self.p1_p = p
 
         self.t = np.linspace(-np.pi / 2 + 0.0001, np.pi / 2 - 0.0001, 361)[::-1]

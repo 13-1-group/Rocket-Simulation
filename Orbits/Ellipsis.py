@@ -6,7 +6,25 @@ from .Orbit import Orbit
 
 
 class Ellipsis(Orbit):
+    '''
+    Ellipsis Orbit Rocket Class
+
+    Methods:
+        solar_system(i):
+            transmits the coordinates of the rocket's movement.
+        visualize():
+            rendering of the animated movement of the rocket around the celestial body.
+    '''
     def __init__(self, e, a):
+        '''
+        Initializes the parameters of the elliptical orbit and calculates the coordinates of the rocket's movement.
+
+        :param e: eccentricity
+        :type e: float
+        :param a: semiaxis
+        :type a: float
+
+        '''
         self.p1_a, self.p1_e = a, e
         p1_b = self.p1_a * np.sqrt(1 - self.p1_e ** 2)
 

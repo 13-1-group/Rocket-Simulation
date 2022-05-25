@@ -6,7 +6,24 @@ from .Orbit import Orbit
 
 
 class Hyperbolic(Orbit):
+    '''
+    Parabolic Orbit Rocket Class
+
+    Methods:
+        solar_system(i):
+            transmits the coordinates of the rocket's movement.
+        visualize():
+            rendering of the animated movement of the rocket around the celestial body.
+    '''
     def __init__(self, a, e):
+        '''
+        Initializes the parameters of the hyperbolic orbit and calculates the coordinates of the rocket's motion.
+
+        :param e: eccentricity
+        :type e: float
+        :param a: semiaxis
+        :type a: float
+        '''
         self.p1_a, self.p1_e = a, e
 
         self.t = np.linspace(np.pi / 2, 3 * np.pi / 2, 361)
