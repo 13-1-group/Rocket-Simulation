@@ -1,11 +1,9 @@
 from matplotlib.animation import writers
 import matplotlib.animation as animation
 import matplotlib.pyplot as plt
-from matplotlib import rcParams
 import numpy as np
+from .constants import BOUNDS_X, BOUNDS_Y
 
-BOUNDS_X = (-20.2, 20.2)
-BOUNDS_Y = (-20.2, 20.2)
 
 class Parabolic:
     def __init__(self, p):
@@ -37,7 +35,3 @@ class Parabolic:
         plt.axis(False)
         plt.legend()
         plt.show()
-
-if __name__ == '__main__':
-    pr = Parabolic(4)
-    pr.visualize()

@@ -3,15 +3,12 @@ import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 import numpy as np
-
-BOUNDS_X = (-20.2, 20.2)
-BOUNDS_Y = (-20.2, 20.2)
+from .constants import BOUNDS_X, BOUNDS_Y
 
 
-class Ellipsis:
-    def __init__(self, e, a):
+class Hyperbolic:
+    def __init__(self, a, e):
         self.p1_a, self.p1_e = a, e
-        p1_b = self.p1_a * np.sqrt(1 - self.p1_e ** 2)
 
         self.fig = plt.figure()
         self.ax = plt.axes(xlim=BOUNDS_X, ylim=BOUNDS_Y)
@@ -19,9 +16,9 @@ class Ellipsis:
         self.rocket, = self.ax.plot([], [], marker='o', markersize=4, markerfacecolor='red', label='Rocket')
         self.rocket_o, = self.ax.plot([], [], color='w', lw=1.5)
 
-        self.t = np.linspace(0, 2 * np.pi, 361)
-        self.x1 = self.p1_a * np.cos(self.t) - self.p1_a * self.p1_e
-        self.y1 = p1_b * np.sin(self.t)
+        self.t = np.linspace(np.pi / 2, 3 * np.pi / 2, 361)
+        self.x1 = np.sqrt(self.p1_a * 1 / (np.cos(2 * self.t) + 0.01)) * np.cos(self.t)
+        self.y1 = np.sqrt(self.p1_a * 1 / (np.cos(2 * self.t) + 0.01)) * np.sin(self.t)
 
     def solar_system(self, i):
         self.rocket.set_data(self.x1[i], self.y1[i])
@@ -37,8 +34,3 @@ class Ellipsis:
         plt.axis(False)
         plt.legend()
         plt.show()
-
-
-if __name__ == '__main__':
-    el = Ellipsis(0.1, 2)
-    el.visualize()
