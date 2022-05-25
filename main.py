@@ -3,11 +3,12 @@ import Orbits
 if __name__ == '__main__':
 
     def submenu_text_set(orbit_name: str) -> str:
-         return f"""
+        return f"""
             Shoosen {orbit_name} Orbit.
             1 - set default values
             2 - set values by yourself
             """
+
 
     print(
         """
@@ -22,13 +23,13 @@ if __name__ == '__main__':
     if menu is 1:
         sub_menu = int(input(submenu_text_set("Elliptical")))
         if sub_menu == 1:
-            a, e =  0.1, 2
+            a, e = 0.1, 2
             el = Orbits.Ellipsis(a, e)
             el.visualize()
         if sub_menu == 2:
-            a = input('Enter the value of the semi-major axis a:\n')
-            e = input('Enter an eccentricity value e:\n')
-            if (int(e) == 1): 
+            a = float(input('Enter the value of the semi-major axis a:\n'))
+            e = float(input('Enter an eccentricity value e:\n'))
+            if (int(e) == 1):
                 print('This eccentricity satisfies the trajectory of motion along the Barycentric Orbit!')
                 el = Orbits.Ellipsis(a, e)
                 el.visualize()
@@ -39,12 +40,12 @@ if __name__ == '__main__':
     if menu is 2:
         sub_menu = int(input(submenu_text_set("Hyperbolic")))
         if sub_menu == 1:
-            a, e =  0.1, 10
+            a, e = 0.1, 10
             el = Orbits.Hyperbolic(a, e)
             el.visualize()
         if sub_menu == 2:
-            a = input('Enter the value of the semi-major axis a:\n')
-            e = input('Enter an eccentricity value e:\n')
+            a = float(input('Enter the value of the semi-major axis a:\n'))
+            e = float(input('Enter an eccentricity value e:\n'))
             hyp = Orbits.Hyperbolic(a, e)
             hyp.visualize()
 
@@ -55,6 +56,6 @@ if __name__ == '__main__':
             pr = Orbits.Parabolic(4)
             pr.visualize()
         if sub_menu == 2:
-            p = input('Enter the value of the focal semi-parameter of the trajectory p:\n')
+            p = float(input('Enter the value of the focal semi-parameter of the trajectory p:\n'))
             pr = Orbits.Parabolic(p)
             pr.visualize()
