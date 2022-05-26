@@ -6,7 +6,7 @@ from .Orbit import Orbit
 
 
 class Hyperbolic(Orbit):
-    '''
+    """
     Hyperbolic Orbit Rocket Class
 
     Methods:
@@ -14,21 +14,27 @@ class Hyperbolic(Orbit):
             transmits the coordinates of the rocket's movement.
         visualize():
             rendering of the animated movement of the rocket around the celestial body.
-    '''
-    def __init__(self, a, e):
-        '''
+    """
+
+    def __init__(self, e, a):
+        """
         Initializes the parameters of the hyperbolic orbit and calculates the coordinates of the rocket's motion.
 
         :param e: eccentricity
         :type e: float
         :param a: semiaxis
         :type a: float
-        '''
+        """
         self.p1_a, self.p1_e = a, e
+        err = 1e10-8
 
         self.t = np.linspace(np.pi / 2, 3 * np.pi / 2, 361)
-        self.x1 = np.sqrt(self.p1_a * 1 / (np.cos(2 * self.t) + 0.01)) * np.cos(self.t)
-        self.y1 = np.sqrt(self.p1_a * 1 / (np.cos(2 * self.t) + 0.01)) * np.sin(self.t)
+        denom_value = np.cos(2 * self.t)
+        denom_value[denom_value == 0] = err
+        root_value = self.p1_a * 1 / denom_value
+        root_value[root_value < 0] = None
+        self.x1 = np.sqrt(root_value) * np.cos(self.t)
+        self.y1 = np.sqrt(root_value) * np.sin(self.t)
 
     def solar_system(self, i):
         self.rocket.set_data(self.x1[i], self.y1[i])
@@ -42,5 +48,5 @@ class Hyperbolic(Orbit):
                                        repeat=True)
         fig.patch.set_facecolor('k')
         fig.tight_layout()
-        plt.plot(self.p1_a * self.p1_e, 0, 'yo', markersize=6.5, label='Moon')
+        plt.plot(self.p1_a / self.p1_e, 0, 'yo', markersize=6.5, label='Moon')
         plot_show()

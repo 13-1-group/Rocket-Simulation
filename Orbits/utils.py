@@ -19,7 +19,7 @@ def plot_initialize():
 def plot_show():
     """
         draw plot in separate window
-        """
+    """
     plt.axis(False)
     plt.legend()
     plt.show()
